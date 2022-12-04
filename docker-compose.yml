@@ -1,0 +1,16 @@
+version: "3.9"
+# docker compose --env-file ./.env up -d
+services:
+  Nginx:
+    image: nginx:latest
+    container_name: nginx-container
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ${ROOT_LOCATION}/src:/usr/share/nginx/html
+    networks:
+      - nginx-network
+
+networks:
+  nginx-network:
